@@ -25,6 +25,7 @@ public class Product {
 	//2. getters - nak no lombok bibliotekas
 	//3. setters - nak no lombok bibliotekas
 	//4. abi konstruktori - bez argumenata konstruktors nak no lombok bibliotekas
+	
 	public Product(String inputTitle, float inputPrice, int inputQuantity, String inputdescription,
 			ProductType inputProductType) {
 		setTitle(inputTitle);
