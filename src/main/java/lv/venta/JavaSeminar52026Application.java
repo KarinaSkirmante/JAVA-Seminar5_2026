@@ -34,6 +34,13 @@ public class JavaSeminar52026Application {
 				
 				
 				
+				//TODO
+				
+				//iegut, cik daudz rpodukti ir tabula
+				// iegut visus produktus no tabulas
+				// veikt update
+				//veikt dzesanu
+				
 			}
 		};
 		
