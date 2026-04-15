@@ -19,7 +19,30 @@ public class ProductCRUDServiceImpl implements IProductCRUDService{
 	
 	@Override
 	public void create(String title, float price, int quantity, String description, ProductType type) throws Exception {
-		// TODO Auto-generated method stub
+		if(title == null || !title.matches("[A-Z]{1}[a-z ]{2,30}")
+				|| price < 0 || price > 1000
+				|| quantity < 0 || quantity > 100
+				|| description == null || !description.matches("[A-Za-z 0-9]{0,400}")
+				|| type == null) {
+			throw new Exception("Kads no ievades artgumentiem nav atbilstoss");
+		}
+		
+		//parbaudam, vai tads produkts jau eksiste, ja ta, tad papildinama krajumus
+		if(prodRepo.existsByTitleAndPriceAndDescriptionAndProductType(title, price, description, type )) {
+			Product productfromDB = prodRepo.findByTitleAndPriceAndDescriptionAndProductType
+					(title, price, description, type);
+			
+			int newQuantity = productfromDB.getQuantity() + quantity;
+			productfromDB.setQuantity(newQuantity);
+			prodRepo.save(productfromDB);//izpildas UPDATE vaicajums
+			
+		}
+		else
+		{
+			Product newProduct = new Product(title, price, quantity, description, type);
+			prodRepo.save(newProduct);//izpildas INSERT INTO vaicajums
+		}
+		
 		
 	}
 
