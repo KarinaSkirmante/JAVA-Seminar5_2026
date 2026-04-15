@@ -41,6 +41,8 @@ public class JavaSeminar52026Application {
 				// veikt update
 				//veikt dzesanu
 				
+				//pameginat no moodles aprakstu par MySQL
+				
 			}
 		};
 		
