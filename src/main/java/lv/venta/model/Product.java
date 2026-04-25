@@ -51,7 +51,7 @@ public class Product {
 	
 	@Column(name = "Description")
 	@NotNull(message = "Aprakstam jabut realam")
-	@Pattern(regexp = "[A-Za-z 0-9]{0,400}")
+	@Pattern(regexp = "[A-Za-z 0-9]{0,400}", message = "Var saturet tikai burtus un ciparus")
 	private String description;
 	
 	@Column(name = "ProductType")
