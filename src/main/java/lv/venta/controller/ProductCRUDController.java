@@ -86,5 +86,58 @@ public class ProductCRUDController {
 			return "error-page";
 		}
 	}
+	
+	
+	@GetMapping("/update/{id}")//localhost:8080/product/crud/update/2
+	public String getUpdateProductById(@PathVariable(name = "id") long id, Model model) {
+		
+		try
+		{
+			Product prodFromDB = prodService.retrieveById(id);
+			model.addAttribute("product", prodFromDB);
+			return "update-product-page";
+			
+		}
+		catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
+			return "error-page";
+		}
+		
+	}
+	
+	
+	
+	@PostMapping("/update/{id}")
+	public String postUpdateProductById(@PathVariable(name = "id") long id, Product product, Model model) {
+		try
+		{
+			prodService.updateById(id, product.getTitle(), product.getPrice(), product.getQuantity(),
+				product.getDescription(), product.getProductType());
+			
+			//ja ir redirect, tad uz url adresi parmet (ne lapu)
+			//TODO ja velas, var ari redirectet uz konkreta produkta lapu redirect:/product/crud/all/id
+			return "redirect:/product/crud/all";
+		}
+		catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
+			return "error-page";
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
