@@ -125,7 +125,19 @@ public class ProductCRUDController {
 	}
 	
 	
-	
+	@GetMapping("/delete/{id}")
+	public String getDeleteProductById(@PathVariable(name = "id") long id, Model model) {
+		try
+		{
+			prodService.deleteById(id);
+			model.addAttribute("package", prodService.retrieveAll());
+			return "show-all-products-page";//tiks paradita show-all-products-page.html lapa
+		}
+		catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
+			return "error-page";
+		}
+	}
 	
 	
 	
