@@ -14,7 +14,7 @@ public class MyUserDetails implements UserDetails{
 
 	private MyUser user;
 	
-	private MyUserDetails(MyUser newUser) {
+	public MyUserDetails(MyUser newUser) {
 		user = newUser; //TODO parbaudit notnull
 	}
 	
