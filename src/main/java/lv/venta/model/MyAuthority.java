@@ -10,6 +10,9 @@ import lombok.ToString;
 //git pull origin master
 //gir branch 
 //git merge ritvars
+//git add . 
+//git commit -m
+//git push ...
 @Getter
 @Setter
 @NoArgsConstructor
