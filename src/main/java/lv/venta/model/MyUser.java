@@ -14,32 +14,29 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-//git checkout master
-//git pull origin master
-//gir branch 
-//git merge ritvars
-//git add . 
-//git commit -m
-//git push ...
+
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "MyAuthorityTable")
+@Table(name = "MyUserTable")
 @Entity
-public class MyAuthority {
-	
+public class MyUser {
 	@Setter(value = AccessLevel.NONE)
-	@Column(name = "Ida")
+	@Column(name = "IdU")
 	@Id //ka primara atslega
 	@GeneratedValue(strategy = GenerationType.AUTO)//tiks glabat DB automatiska pec ato increament algoritma
-	private long ida;
+	private long idu;
 	
-	@Column(name = "Title")
+	@Column(name = "Username")
 	@NotNull
 	@NotEmpty
-	@Pattern(regexp = "[A-Z_]{4,10}")
-	private String title;
+	@Pattern(regexp = "[A-Za-z0-9]{5,20}")
+	private String username;
 	
-	
+	@Column(name = "Password")
+	@NotNull
+	@NotEmpty
+	//neliekam Pattern, jo te glabasies jau enkodeta parole
+	private String password;
 }
